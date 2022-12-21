@@ -1,0 +1,15 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"
+/>
+
+<div class="header">
+  <p style="font-weight: 800">Where in the world?</p>
+  <div (click)="changeMode()" class="mode">
+    <span>Dark Mode </span><i [class]="checkMode()"></i>
+  </div>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,43 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css"
+/>
+
+<div class="container">
+  <button class="back-button" routerLink="">
+    <i class="fa-solid fa-arrow-left"></i> Back
+  </button>
+
+  <div class="flex-container">
+    <img [src]="country[0].flags.png" alt="flag" />
+
+    <div class="country-description">
+      <h1>{{ country[0].name.common }}</h1>
+      <div class="country-description-content">
+        <div>
+          <p><b>Native Name:</b> {{ nativeName }}</p>
+          <p><b>Population:</b> {{ country[0].population }}</p>
+          <p><b>Region:</b> {{ country[0].region }}</p>
+          <p><b>Sub Region:</b> {{ country[0].subregion }}</p>
+          <p><b>Capital:</b> {{ country[0].capital }}</p>
+          <br />
+        </div>
+        <div>
+          <p><b>Top Level Domain:</b> {{ country[0].tld }}</p>
+          <p><b>Currencies:</b> {{ currencies }}</p>
+          <p><b>Languages:</b> {{ languages }}</p>
+          <br />
+        </div>
+      </div>
+      <p><b>Border Countries:</b></p>
+      <button
+        routerLink="/details"
+        (click)="fetchCountryDetails(border)"
+        class="country-links"
+        *ngFor="let border of borderName; let i = index"
+      >
+        {{ border }}
+      </button>
+    </div>
+  </div>
+</div>

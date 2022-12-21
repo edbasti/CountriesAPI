@@ -1,0 +1,44 @@
+<div class="countries-container">
+  <div class="filters">
+    <input
+      [(ngModel)]="countryName"
+      (input)="countrySearch()"
+      type="text"
+      name="search"
+      placeholder="Search for a country..."
+    />
+    <select (change)="regionFilter()" [(ngModel)]="selectedRegion">
+      <option disabled>Filter by Region</option>
+      <option>Africa</option>
+      <option>Americas</option>
+      <option>Asia</option>
+      <option>Europe</option>
+      <option>Oceania</option>
+    </select>
+  </div>
+
+  <div *ngIf="countriesArray.length < 1 && error == false" class="loading">
+    Loading...
+  </div>
+
+  <div *ngIf="error == true" class="error"></div>
+
+  <div *ngIf="countriesArray.length > 0" class="country-container">
+    <div
+      routerLink="/details"
+      class="card"
+      *ngFor="let country of countriesArray; let i = index"
+      (click)="setCountry(countriesArray[i].name.common)"
+    >
+      <img [src]="countriesArray[i]?.flags.png" alt="country flag" />
+      <div class="country-description">
+        <div class="country-name">{{ countriesArray[i]?.name.common }}</div>
+        <div class="country-details">
+          <p>Population: {{ countriesArray[i]?.population }}</p>
+          <p>Region: {{ countriesArray[i]?.region }}</p>
+          <p>Capital: {{ countriesArray[i]?.capital }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
